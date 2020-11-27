@@ -1,25 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
 // angular core 라이브러리에서 제공하는 Decorator
 
 import { Hero } from '../hero'; // hero interface를 import
-import { HEROES } from '../mock-heroes' // mock data import
+import { HeroService } from '../hero.service'; // HeroService import
+import { MessageService } from '../message.service';
 
 @Component({
-  selector: 'app-heroes',   // Component Name
-  templateUrl: './heroes.component.html',   // Template URL
-  styleUrls: ['./heroes.component.sass']    // style URL
+  selector: 'app-heroes', // Component Name
+  templateUrl: './heroes.component.html', // Template URL
+  styleUrls: ['./heroes.component.sass'], // style URL
 })
 export class HeroesComponent implements OnInit {
-  heroes = HEROES;    //mock-heroes file --> heroes에 할당
-  selectedHero:Hero;    //onSelect함수를 통해서 받아온 매개변수를 hero interface에 적용 
+  heroes: Hero[]; // getHeroes함수를 통해서 받아온 데이터를 저장하기 위해서 빈 Hero배열을 선언
 
-  constructor() { }
+  constructor(private heroService: HeroService) {}
 
   ngOnInit() {
+    this.getHeroes();
   }
 
-  onSelect(hero:Hero): void {
-    this.selectedHero = hero;
+  getHeroes(): void {
+    // this.heroes = this.heroService.getHeroes();
+    this.heroService.getHeroes().subscribe((heroes) => (this.heroes = heroes));
   }
-
 }
