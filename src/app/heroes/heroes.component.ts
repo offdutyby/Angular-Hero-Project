@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+// import { Observable, of } from 'rxjs';
 // angular core 라이브러리에서 제공하는 Decorator
 
 import { Hero } from '../hero'; // hero interface를 import
 import { HeroService } from '../hero.service'; // HeroService import
-import { MessageService } from '../message.service';
+// import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-heroes', // Component Name
