@@ -14,6 +14,7 @@ import { HeroService } from '../hero.service'; // HeroService import
 export class HeroesComponent implements OnInit {
   heroes: Hero[]; // getHeroes함수를 통해서 받아온 데이터를 저장하기 위해서 빈 Hero배열을 선언
 
+  // eslint-disable-next-line no-useless-constructor
   constructor(private heroService: HeroService) {}
 
   ngOnInit() {
@@ -22,6 +23,7 @@ export class HeroesComponent implements OnInit {
 
   getHeroes(): void {
     // this.heroes = this.heroService.getHeroes();
-    this.heroService.getHeroes().subscribe((heroes) => (this.heroes = heroes));
+    // eslint-disable-next-line no-return-assign
+    this.heroService.getHeroes().subscribe((heroes) => (this.heroes = heroes)); // subscribe 매서드를 사용해서 비동기 적용
   }
 }

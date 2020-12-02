@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Hero } from './hero';
 import { MessageService } from './message.service';
 
@@ -8,10 +7,10 @@ import { MessageService } from './message.service';
   providedIn: 'root',
 })
 export class InMemoryDataService implements InMemoryDbService {
-  constructor(
-    private http: HttpClient,
-    private messageService: MessageService
-  ) {}
+  // constructor(
+  //   private http: HttpClient,
+  //   private messageService: MessageService
+  // ) {}
 
   createDb() {
     const heroes = [
