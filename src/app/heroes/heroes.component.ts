@@ -26,4 +26,19 @@ export class HeroesComponent implements OnInit {
     // eslint-disable-next-line no-return-assign
     this.heroService.getHeroes().subscribe((heroes) => (this.heroes = heroes)); // subscribe 매서드를 사용해서 비동기 적용
   }
+
+  add(name: string): void {
+    name = name.trim();
+    if (!name) {
+      return;
+    }
+    this.heroService.addHero({ name } as Hero).subscribe((hero) => {
+      this.heroes.push(hero);
+    });
+  }
+
+  delete(hero: Hero): void {
+    this.heroes = this.heroes.filter((h) => h !== hero);
+    this.heroService.deleteHero(hero).subscribe();
+  }
 }
